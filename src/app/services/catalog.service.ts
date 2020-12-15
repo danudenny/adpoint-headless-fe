@@ -38,7 +38,7 @@ export class CatalogService {
 
     let options = new RequestOptions({headers: headers, search: search});
 
-    return this._http.get('https://m2.rocwang.me/rest/V1/products', options)
+    return this._http.get(this._magento.apiUrl + 'products', options)
       .map(response => response.json())
       .catch(this._handleError)
       .subscribe(data => {
