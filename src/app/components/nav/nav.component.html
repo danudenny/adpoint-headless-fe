@@ -1,0 +1,28 @@
+<a class="item" [routerLink]="['Featured']" [class.active]="router.isRouteActive(router.generate(['/Featured']))">
+  <i class="star icon"></i>
+  Featured
+</a>
+
+<a class="item" [routerLink]="['Catalog']" [class.active]="router.isRouteActive(router.generate(['/Catalog']))">
+  <i class="grid layout icon">
+  </i>Catalog
+</a>
+
+<a id="nav-checkout"
+   class="item"
+   [routerLink]="['Checkout']"
+   [attr.data-title]="'Grand Total: ' + (cart?.totals?.grand_total | currency:'NZD':true)"
+   [class.active]="router.isRouteActive(router.generate(['/Checkout']))"
+>
+  <i id="icon-cart"
+     class="icon"
+     [ngClass]="{shop: !cart.isLoading, loading: cart.isLoading, spinner: cart.isLoading}"
+  ></i>
+  Checkout
+  <div class="ui red floating circular label" *ngIf="cart?.totals?.items_qty > 0">{{cart.totals.items_qty}}</div>
+</a>
+
+<a class="item" [routerLink]="['Me']" [class.active]="router.isRouteActive(router.generate(['/Me']))">
+  <i class="user icon"></i>
+  Me
+</a>

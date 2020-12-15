@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="/">
+  <title>Storefront</title>
+  <meta name="description" content="Storefront">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="semantic/semantic.css">
+
+  <!-- Project external libraries -->
+  <script src="js/jquery.js"></script>
+  <script src="semantic/semantic.js"></script>
+  <script src="js/elevator.js"></script>
+  <script src="js/card.js"></script>
+
+  <!-- Libraries required by Angular 2 -->
+  <script src="js/es6-shim.min.js"></script>
+  <script src="js/zone.js"></script>
+  <script src="js/Reflect.js"></script>
+  <script src="js/system.src.js"></script>
+
+  <script src="js/systemjs.config.js"></script>
+  <script>
+    System.import('app').catch(function (err) { console.error(err); });
+  </script>
+</head>
+<body>
+<app>
+  <div class="ui active text large loader">Loading</div>
+</app>
+</body>
+</html>

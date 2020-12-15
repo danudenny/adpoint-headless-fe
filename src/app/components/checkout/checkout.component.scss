@@ -1,0 +1,19 @@
+:host {
+  display : block;
+  height  : 100%;
+}
+
+.ui.grid {
+  height    : 100%;
+  margin    : 0;
+  flex-flow : column nowrap;
+
+  .form-container {
+    flex-grow : 1;
+
+    .column {
+      display   : flex;
+      flex-flow : column nowrap;
+    }
+  }
+}

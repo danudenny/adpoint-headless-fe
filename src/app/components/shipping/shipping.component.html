@@ -1,0 +1,92 @@
+<form class="ui form">
+
+  <div class="field" [class.disabled]="payment.isPlacingOrder">
+    <label>Email</label>
+    <input type="text" [(ngModel)]="payment.email">
+  </div>
+
+  <div class="field" [class.disabled]="payment.isPlacingOrder">
+    <div class="two fields">
+      <div class="field">
+        <label>First Name</label>
+        <input type="text" [(ngModel)]="shipping.selectedAddress.firstname">
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input type="text" [(ngModel)]="shipping.selectedAddress.lastname">
+      </div>
+    </div>
+  </div>
+
+  <div class="field" [class.disabled]="payment.isPlacingOrder">
+    <label>Address</label>
+    <input type="text" placeholder="Street Address 1" [(ngModel)]="shipping.selectedAddress.street[0]">
+  </div>
+
+  <div class="field" [class.disabled]="payment.isPlacingOrder">
+    <input type="text" placeholder="Street Address 2" [(ngModel)]="shipping.selectedAddress.street[1]">
+  </div>
+
+  <div class="two fields" [class.disabled]="payment.isPlacingOrder">
+    <div class="field">
+      <label>City</label>
+      <input type="text" [(ngModel)]="shipping.selectedAddress.city">
+    </div>
+    <div class="field">
+      <label>Zip/Post Code</label>
+      <input type="text" [(ngModel)]="shipping.selectedAddress.postcode" (change)="shipping.loadMethodsByAddress()">
+    </div>
+  </div>
+
+  <div class="two fields" [class.disabled]="payment.isPlacingOrder">
+    <div class="field">
+      <label>State / Province</label>
+      <input type="text" [(ngModel)]="shipping.selectedAddress.region" (change)="shipping.loadMethodsByAddress()">
+    </div>
+    <div class="field">
+      <label>Country</label>
+      <country [(countryId)]="shipping.selectedAddress.countryId"
+               (countryIdChange)="shipping.loadMethodsByAddress()"
+               (countryIdChange)="payment.loadMethods()"
+      ></country>
+    </div>
+  </div>
+
+  <div class="field" [class.disabled]="payment.isPlacingOrder">
+    <label>Phone Number</label>
+    <input type="text" [(ngModel)]="shipping.selectedAddress.telephone">
+  </div>
+
+  <div class="grouped fields shipping-methods">
+    <div class="field" [class.disabled]="payment.isPlacingOrder">
+      <label>Shipping Methods</label>
+    </div>
+
+    <div class="field"
+         *ngFor="let method of shipping.availableMethods; let i=index"
+         [class.disabled]="payment.isPlacingOrder">
+      <div class="ui radio checkbox">
+        <input type="radio"
+               tabindex="0"
+               class="hidden"
+               name="shipping_method"
+               [id]="'shipping_method_' + i"
+               [value]="method.state.value"
+               [(ngModel)]="method.state"
+               ngControl="shippingMethod"
+               (change)="save()"
+        >
+        <label [attr.for]="'shipping_method_' + i">
+          {{method.carrier_title}}
+          - {{method.method_title}}
+          - {{method.price_incl_tax | currency:'NZD':true}}
+        </label>
+      </div>
+    </div>
+
+    <div class="ui inverted dimmer" [class.active]="shipping.isLoadingMethods">
+      <div class="ui loader"></div>
+    </div>
+  </div>
+
+</form>

@@ -1,0 +1,26 @@
+<div class="ui link cards" *ngIf="catalog.products?.length">
+  <div class="card" *ngFor="let product of catalog.products">
+
+    <div class="image">
+      <img src="{{product.imgSrc}}" #productImg>
+    </div>
+
+    <div class="content">
+      <div class="header">{{product.name}}</div>
+    </div>
+
+    <div class="extra content">
+      <span>{{product.price | currency:'NZD':true}}</span>
+      <button class="ui primary mini button right floated"
+              type="button"
+              (click)="add(product, productImg)"
+              [ngClass]="{loading: product.isAdding, disabled: product.isAdding}"
+      >
+        Add to Cart
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div class="ui text large loader" [class.active]="!catalog.products?.length">Loading</div>

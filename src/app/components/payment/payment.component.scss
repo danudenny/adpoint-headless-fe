@@ -1,0 +1,18 @@
+:host {
+  display   : flex;
+  flex-flow : column nowrap;
+  flex-grow : 1;
+}
+
+.ui.form {
+  flex-grow : 1;
+  overflow  : auto;
+}
+
+.credit-card.hidden {
+  display : none;
+}
+
+.cc-card {
+  margin-bottom : 20px;
+}
