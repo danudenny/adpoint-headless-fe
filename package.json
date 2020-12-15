@@ -1,19 +1,15 @@
 {
-    "name"           : "storefront",
+    "name"           : "Adpoint",
     "version"        : "1.0.0",
-    "description"    : "One page storefront for Magento2",
+    "description"    : "Magento 2 Headless using Angular TS Frontend Framework",
     "main"           : "index.html",
-    "repository"     : {
-        "type": "git",
-        "url" : "git+ssh://git@bitbucket.org/rocwang/storefront.git"
-    },
     "keywords"       : [
         "storefront",
         "magento2"
     ],
-    "author"         : "Roc Wang",
+    "author"         : "Denny Danuwijaya",
     "license"        : "UNLICENSED",
-    "homepage"       : "https://bitbucket.org/rocwang/storefront",
+    "homepage"       : "https://github.com/danudenny/adpoint-headless-fe",
     "scripts"        : {
         "postinstall": "npm run typings install",
         "typings"    : "typings"
